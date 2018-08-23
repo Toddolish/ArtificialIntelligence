@@ -8,11 +8,22 @@ namespace SteeringBehaviours
     public class AIAgent : MonoBehaviour
     {
         public NavMeshAgent agent;
-        public Transform target;
+        private Vector3 point;
 
         void Update()
         {
-            agent.SetDestination(target.position);
+            if (Input.GetKeyDown(KeyCode.Mouse0))
+            {
+                if (point.magnitude > 0)
+                {
+                    agent.SetDestination(point);
+                }
+            }
+        }
+
+        public void SetTarget(Vector3 point)
+        {
+            this.point = point;
         }
     }
 }
