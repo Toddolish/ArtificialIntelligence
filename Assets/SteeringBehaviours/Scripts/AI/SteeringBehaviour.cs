@@ -8,7 +8,7 @@ namespace SteeringBehaviours {
     public abstract class SteeringBehaviour : MonoBehaviour
     {
         [Header("Agent Owner")]
-        public float waiting; //how much influence the behaviour has over the other Behaviours
+        public float weighting; //how much influence the behaviour has over the other Behaviours
         public AIAgent owner; //reference to the AIagent owner of behaviour
 
         public void Awake()

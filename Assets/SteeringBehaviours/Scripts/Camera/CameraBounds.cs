@@ -21,7 +21,7 @@ public class CameraBounds : MonoBehaviour
         }
         #endregion
         #region posX
-        if (incomingPos.x > pos.x + halfSize.z)
+        if (incomingPos.x > pos.x + halfSize.x)
         {
             incomingPos.x = pos.x + halfSize.x;
         }
@@ -35,18 +35,22 @@ public class CameraBounds : MonoBehaviour
         {
             incomingPos.y = pos.y + halfSize.y;
         }
-        if (incomingPos.y < pos.y - halfSize.y)
-        {
-            incomingPos.y = pos.y - halfSize.y;
-        }
+        //if (incomingPos.y < pos.y - halfSize.y)
+        //{
+        //    incomingPos.y = pos.y - halfSize.y;
+        //}
         #endregion
         return incomingPos;
+    }
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.magenta;
+        Gizmos.DrawWireCube(transform.position, size);
     }
     void Start()
     {
 
     }
-    
     void Update()
     {
 
