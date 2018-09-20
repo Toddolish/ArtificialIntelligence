@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using GGL;
 
 namespace SteeringBehaviours
 {
@@ -14,9 +15,13 @@ namespace SteeringBehaviours
         {
             // Get direction (velocity) to target
             Vector3 direction = target.position - owner.transform.position;
-            // Normalize Velocity (remove the magnitute part of vector)
-            direction.Normalize();
+            if (target)
+            {
+                // Normalize Velocity (remove the magnitute part of vector)
+                direction.Normalize();
+            }
             return direction * owner.maxSpeed; // return velocity (direction)
+            //GizmosGL.AddSphere(target.position)
         }
     }
 }

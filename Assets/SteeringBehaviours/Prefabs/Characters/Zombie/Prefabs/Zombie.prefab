@@ -337,7 +337,7 @@ GameObject:
   - component: {fileID: 4208689535139142}
   - component: {fileID: 95274127410237140}
   m_Layer: 0
-  m_Name: zombie_common_model
+  m_Name: model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -595,6 +595,9 @@ GameObject:
   - component: {fileID: 4547834855378564}
   - component: {fileID: 136240301578001516}
   - component: {fileID: 54428156910901590}
+  - component: {fileID: 114809250438723958}
+  - component: {fileID: 114020487108028878}
+  - component: {fileID: 195948369403855894}
   m_Layer: 0
   m_Name: Zombie
   m_TagString: Untagged
@@ -1417,8 +1420,8 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1620118080360608}
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 0, y: -0.48, z: 13.38}
+  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
+  m_LocalPosition: {x: -13.32, y: 5.25, z: -29.29}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4208689535139142}
@@ -1906,6 +1909,38 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &114020487108028878
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1620118080360608}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f7068974b5185e49bbe96cd55506763, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weighting: 30
+  owner: {fileID: 0}
+  offset: 1
+  radius: 1
+  jitter: 0.2
+--- !u!114 &114809250438723958
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1620118080360608}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8e2bd467d7854d428f0beaf852c3850, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxSpeed: 10
+  maxDistance: 5
+  updatePosition: 1
+  updateRotation: 1
+  velocity: {x: 0, y: 0, z: 0}
 --- !u!136 &136240301578001516
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -2339,3 +2374,24 @@ SkinnedMeshRenderer:
     m_Center: {x: -5.3418036, y: 20.646086, z: 9.417131}
     m_Extent: {x: 36.711273, y: 24.009619, z: 53.89866}
   m_DirtyAABB: 0
+--- !u!195 &195948369403855894
+NavMeshAgent:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1620118080360608}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4

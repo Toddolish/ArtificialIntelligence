@@ -13,7 +13,7 @@ namespace SteeringBehaviours {
 
         public void Awake()
         {
-
+            owner = GetComponent<AIAgent>();
         }
         public virtual Vector3 GetForce()
         {
