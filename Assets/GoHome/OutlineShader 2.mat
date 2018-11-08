@@ -28,7 +28,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - _DiffuseColourSwitch: 1
-    - _OutlineThickness: 0.02
+    - _OutlineThickness: 0
     - __dirty: 0
     m_Colors:
     - _ObjectColour: {r: 0.33333337, g: 0.9028209, b: 1, a: 0}

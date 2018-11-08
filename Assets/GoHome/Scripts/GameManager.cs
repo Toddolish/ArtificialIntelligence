@@ -23,11 +23,20 @@ namespace GoHome
         {
             Instance = this;
             // dataPath = "C:\Users\Documents\Project\Assets"
-            fullPath = Application.dataPath + "/GoHome/Data/" + fileName;
+            // GoHome\Data\GameSame.xml"
+            fullPath = Application.dataPath + "/GoHome/Data/" + fileName + ".xml";
+            // Check if file exists
+            if (File.Exists(fullPath))
+            {
+                // Load the file and contents
+                Load();
+            }
         }
         private void OnDestroy()
         {
             Instance = null;
+            // Save data on destroy
+           //  Save();
         }
         #endregion
         public int currentScore = 0;
@@ -43,32 +52,43 @@ namespace GoHome
         
         public Level[] levels;
         private string fullPath;
+        private GameData data = new GameData();
 
         
         private void Save()
         {
+            // Set data's score to current
+            data.score = currentScore;
+
             // Create a serializer of type GameData
             var serializer = new XmlSerializer(typeof(GameData));
-            //using (var stream = new FileStream(fullPath))
+            using (var stream = new FileStream(fullPath, FileMode.Create))
             {
-
+                serializer.Serialize(stream, data);
             }
         }
 
         private void Load()
         {
-            
+            var serializer = new XmlSerializer(typeof(GameData));
+            using (var stream = new FileStream(fullPath, FileMode.Open))
+            {
+                data = serializer.Deserialize(stream) as GameData;
+            }
         }
         
         private void Start()
         {
+            currentScore = data.score;
+            ScoreText.text = "Score: " + currentScore;
+
             // Populate levels array with levels in game
             levels = levelContainer.GetComponentsInChildren<Level>(true);
-            setLevel(currentLevel);
+            SetLevel(currentLevel);
         }
 
         // Disable all levels except the levelIndex
-        private void setLevel(int LevelIndex)
+        private void SetLevel(int LevelIndex)
         {
             // Loop through all levels
             for (int i = 0; i < levels.Length; i++)
@@ -109,7 +129,7 @@ namespace GoHome
             else
             {
                 // Update current level
-                setLevel(currentLevel);
+                SetLevel(currentLevel);
             }
         }
     }
